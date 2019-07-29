@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class CarService {
   public API = 'https://thawing-chamber-47973.herokuapp.com';
   public CAR_API = this.API + '/cars';
@@ -11,7 +11,8 @@ export class CarService {
   }
 
   getAll(): Observable<any> {
-    return this.http.get(this.API + '/cool-cars');
+    const headers = new HttpHeaders().append('Access-Control-Allow-Origin', 'GET');
+    return this.http.get(this.API + '/cool-cars', { headers });
   }
 
   get(id: string) {

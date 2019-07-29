@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OwnerService } from './../shared/owner/owner.service'
+import { OwnerService } from './../shared/owner/owner.service';
 
 @Component({
   selector: 'app-owner-list',
@@ -7,14 +7,14 @@ import { OwnerService } from './../shared/owner/owner.service'
   styleUrls: ['./owner-list.component.css']
 })
 export class OwnerListComponent implements OnInit {
-  owners: Array<any>;
+  public owners: Array<any>;
 
-  constructor( private ownerService: OwnerService) { }
+  constructor(private ownerService: OwnerService) { }
 
   ngOnInit() {
-    this.ownerService.getAll().subscribe((data: any)=>{
+    this.ownerService.getAll().subscribe((data: any) => {
       this.owners = data._embedded.owners;
-    })
+    });
   }
 
 }

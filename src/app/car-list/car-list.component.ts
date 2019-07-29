@@ -8,7 +8,7 @@ import { GiphyService } from '../shared/giphy/giphy.service';
   styleUrls: ['./car-list.component.css']
 })
 export class CarListComponent implements OnInit {
-  cars: Array<any>;
+  public cars: Array<any>;
 
   constructor(private carService: CarService, private giphyService: GiphyService) { }
 

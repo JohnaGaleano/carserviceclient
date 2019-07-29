@@ -12,7 +12,6 @@ import { NgForm } from '@angular/forms';
 })
 export class CarEditComponent implements OnInit, OnDestroy {
   car: any = {};
-
   sub: Subscription;
 
   constructor(private route: ActivatedRoute,
