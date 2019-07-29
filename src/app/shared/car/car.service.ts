@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class CarService {
-  public API = '//thawing-chamber-47973.herokuapp.com';
+  public API = 'https://thawing-chamber-47973.herokuapp.com';
   public CAR_API = this.API + '/cars';
 
   constructor(private http: HttpClient) {
