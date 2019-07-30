@@ -25,14 +25,12 @@ export class OwnerEditComponent implements OnInit {
     this.sub = this.route.params.subscribe((params: any) => {
       const dni = params.dni;
       if (dni) {
-        this.ownerService.get(dni).subscribe((owner: any) => {
-          if (owner) {
-            this.owner = owner;
-            this.owner.href = owner._links.self.href;
-            // this.giphyService.get(owner.name).subscribe(url => owner.giphyUrl = url);
-          } else {
-            console.log(`Car with id '${dni}' not found, returning to list`);
-            this.gotoList();
+        this.ownerService.getAll().subscribe((owners: any) => {
+          for (const owner of owners._embedded.owners) {
+            if (owner.dni === dni) {
+              this.owner = owner;
+              this.owner.href = owner._links.self.href;
+            }
           }
         });
       }
@@ -48,13 +46,13 @@ export class OwnerEditComponent implements OnInit {
   }
 
   save(form: NgForm) {
-    this.carService.save(form).subscribe(result => {
+    this.ownerService.save(form).subscribe(result => {
       this.gotoList();
     }, error => console.error(error));
   }
 
   remove(href) {
-    this.carService.remove(href).subscribe(result => {
+    this.ownerService.remove(href).subscribe(result => {
       this.gotoList();
     }, error => console.error(error));
   }

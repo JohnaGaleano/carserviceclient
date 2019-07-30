@@ -29,7 +29,7 @@ const routes: Routes = [
     component: OwnerEditComponent
   },
   {
-    path: 'owner-edit/:id',
+    path: 'owner-edit/:dni',
     component: OwnerEditComponent
   },
   {
