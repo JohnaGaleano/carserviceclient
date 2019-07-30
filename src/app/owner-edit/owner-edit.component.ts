@@ -16,10 +16,10 @@ export class OwnerEditComponent implements OnInit {
   public sub: Subscription;
 
   constructor(private route: ActivatedRoute,
-    private router: Router,
-    private ownerService: OwnerService,
-    private carService: CarService,
-    private giphyService: GiphyService) { }
+              private router: Router,
+              private ownerService: OwnerService,
+              private carService: CarService,
+              private giphyService: GiphyService) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe((params: any) => {
@@ -52,10 +52,8 @@ export class OwnerEditComponent implements OnInit {
   }
 
   remove(owner: any) {
-    console.log(owner);
     const dni = owner.dni;
     this.carService.getAll().subscribe((data) => {
-      console.log(data);
       for (const car of data) {
         if (car.ownerDni === dni) {
           car.ownerDni = null;

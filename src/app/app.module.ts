@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { OwnerListComponent } from './owner-list/owner-list.component';
 import { OwnerEditComponent } from './owner-edit/owner-edit.component';
 import { CarOwnerListComponent } from './car-owner-list/car-owner-list.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { CarOwnerListComponent } from './car-owner-list/car-owner-list.component
     MatInputModule,
     MatListModule,
     MatToolbarModule,
-    FormsModule
+    FormsModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
