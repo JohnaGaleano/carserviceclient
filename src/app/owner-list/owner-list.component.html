@@ -5,17 +5,18 @@
       <mat-list-item *ngFor="let owner of owners">
         <!-- <img mat-list-avatar src="{{car.giphyUrl}}" alt="{{car.name}}"> -->
         <h3 mat-line>
-            <mat-checkbox (change)="deleteOwners.push(owner)"> <a mat-button [routerLink]="['/owner-edit', owner.dni]">{{owner.name}}</a> </mat-checkbox>
+          <mat-checkbox (change)="onChange(owner)"> <a mat-button
+              [routerLink]="['/owner-edit', owner.dni]">{{owner.name}}</a> </mat-checkbox>
         </h3>
       </mat-list-item>
     </mat-list>
   </mat-card-content>
-
+  <mat-card-actions>
+    <button mat-raised-button color="secondary" (click)="delete()" type="button">Delete</button>
+  </mat-card-actions>
   <button mat-fab color="primary" [routerLink]="['/owner-add']">Add</button>
   <hr>
-  <a mat-button routerLink="/car-list">Car List</a>
+  <a mat-button routerLink='/car-list'>Car List</a>
   <a mat-button routerLink='/cardWithOwner-list'>Car With Owner List</a>
-  <a mat-button (click)="funPrint()" >hello</a>
-
   <hr>
 </mat-card>
