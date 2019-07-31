@@ -47,13 +47,6 @@ export class OwnerListComponent implements OnInit {
     }
   }
 
-  // delete() {
-  //   for (const owner of this.deleteOwners) {
-  //     this.ownerService.remove(owner._links.self.href).subscribe();
-  //   }
-  //   this.gotoList();
-  // }
-
   gotoList() {
     this.router.navigate(['/car-list']);
   }
