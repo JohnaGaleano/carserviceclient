@@ -16,10 +16,10 @@ export class OwnerEditComponent implements OnInit {
   public sub: Subscription;
 
   constructor(private route: ActivatedRoute,
-              private router: Router,
-              private ownerService: OwnerService,
-              private carService: CarService,
-              private giphyService: GiphyService) { }
+    private router: Router,
+    private ownerService: OwnerService,
+    private carService: CarService,
+    private giphyService: GiphyService) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe((params: any) => {
@@ -52,21 +52,18 @@ export class OwnerEditComponent implements OnInit {
   }
 
   remove(owner: any) {
-    const dni = owner.dni;
-    this.carService.getAll().subscribe((data) => {
-      for (const car of data) {
-        if (car.ownerDni === dni) {
-          car.ownerDni = null;
-          this.carService.save(car).subscribe(() => {
-            this.ownerService.remove(owner.href).subscribe(result => {
-              this.gotoList();
-            }, error => console.error(error));
-          });
-        } else {
-          console.log(`Car with id '${dni}' not found, returning to list`);
+    this.ownerService.remove(owner.href).subscribe(result => {
+      const dni = owner.dni;
+      this.carService.getAll().subscribe((data) => {
+        for (const car of data) {
+          if (car.ownerDni === dni) {
+            car.ownerDni = null;
+            this.carService.save(car).subscribe(() => {
+            });
+          }
         }
-      }
-
+      });
+      this.gotoList();
     });
   }
 

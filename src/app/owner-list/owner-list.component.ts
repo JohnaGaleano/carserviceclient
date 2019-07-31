@@ -8,6 +8,7 @@ import { OwnerService } from './../shared/owner/owner.service';
 })
 export class OwnerListComponent implements OnInit {
   public owners: Array<any>;
+  public deleteOwners: Array<any>;
 
   constructor(private ownerService: OwnerService) { }
 
@@ -15,6 +16,10 @@ export class OwnerListComponent implements OnInit {
     this.ownerService.getAll().subscribe((data: any) => {
       this.owners = data._embedded.owners;
     });
+  }
+
+  funPrint() {
+    console.log(this.deleteOwners);
   }
 
 }
